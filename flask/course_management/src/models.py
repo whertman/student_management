@@ -60,11 +60,25 @@ class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     course_name = db.Column(db.String(128), nullable=False)
     schedule = db.Column(db.String(128))
-    max_capacity = db.Column(db.Integer)
-    term = db.Column(db.String(128), nullable=False)
-    instructor_id = db.Column(db.Integer, db.ForeignKey('instructors.id'), nullable=False)
-    textbook_id = db.Column(db.Integer, db.ForeignKey('textbooks.id'), nullable=False)
+    # max_capacity = db.Column(db.Integer)
+    #term = db.Column(db.String(128), nullable=False)
+    #textbook_id = db.Column(db.Integer, db.ForeignKey('textbooks.id'), nullable=False)
     course_code = db.Column(db.String(128), nullable=False)
+    
+    def __init__(self, course_name:str, schedule:str, course_code:str):
+        self.course_name = course_name
+        self.schedule = schedule
+        self.course_code = course_code
+        # self.term = term
+        # self.textbook_id = textbook_id
+    
+    def serialize(self):
+        return {
+            'course_name': self.course_name,
+            'schedule': self.schedule,
+            'course_code': self.course_code,
+    
+        }
 
 class Instructor(db.Model):
     __tablename__ = 'instructors'
@@ -74,6 +88,20 @@ class Instructor(db.Model):
     department = db.Column(db.String(128), nullable=False)
     office_loc = db.Column(db.String(128))
 
+    def __init__(self, first_name:str, last_name:str, department:str, office_loc:str):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.department = department
+        self.office_loc = office_loc
+
+    def serialize(self):
+        return {
+            'first_name': self.first_name,
+            'last_name': self.last_name,
+            'department': self.department,
+            'office_loc': self.office_loc,
+        }
+ 
 class Residence(db.Model):
     __tablename__ = 'residence_halls'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)

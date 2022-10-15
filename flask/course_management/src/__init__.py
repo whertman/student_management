@@ -31,8 +31,9 @@ def create_app(test_config=None):
     db.init_app(app)
     migrate = Migrate(app, db)
 
-    from .api import students, advisors
+    from .api import students, advisors, courses
     app.register_blueprint(students.bp)
     app.register_blueprint(advisors.bp)
+    app.register_blueprint(courses.bp)
 
     return app
