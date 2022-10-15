@@ -24,3 +24,4 @@ def create():
     db.session.add(c) # prepare CREATE statement
     db.session.commit() # execute CREATE statement
     return jsonify(c.serialize())
+
