@@ -43,10 +43,3 @@ The application was built using Python 3, with Flask/SQLAlchemy frameworks. The 
 # Data Visualization
 See the project_viz.py file for an sample visualization using Python's Pandas, NumPy, Matplotlib, and Psycopg2 libraries.
 
-
-
-
-
-
-# course_management
-# course_management
