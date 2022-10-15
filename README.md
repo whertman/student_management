@@ -1,4 +1,4 @@
-# Student Management Database API
+# Student Management Database
 
 This application is intended as a student and course management tool for an institution's academic advisors.
 
