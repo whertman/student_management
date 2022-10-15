@@ -23,7 +23,6 @@ class Student(db.Model):
 
     def serialize(self):
         return {
-            'id': self.id,
             'last_name': self.last_name,
             'first_name': self.first_name,
             'class_yr': self.class_yr,
@@ -39,7 +38,8 @@ class Advisor(db.Model):
     username = db.Column(db.String(128), unique=True, nullable=False)
     email = db.Column(db.String(128), nullable=False)
 
-    def __init__(self, first_name:str, last_name:str, department:str, username:str, email:str):
+    def __init__(self, first_name:str, last_name:str, department:str, username:str, email:str, id: int):
+        self.id = id
         self.first_name = first_name
         self.last_name = last_name
         self.department = department
@@ -48,6 +48,7 @@ class Advisor(db.Model):
 
     def serialize(self):
         return {
+            'advisor_id': self.id,
             'last_name': self.last_name,
             'first_name': self.first_name,
             'email': self.email,
